@@ -15,5 +15,7 @@ public class Beneficiary {
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="bene_seq")
 	int beneficiaryId;
 	String beneficiaryName;
+	int toAccountNo;
+	
 	
 }
