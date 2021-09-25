@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -16,6 +18,56 @@ public class Beneficiary {
 	int beneficiaryId;
 	String beneficiaryName;
 	int toAccountNo;
+	
+
+	@ManyToOne
+	@JoinColumn(name="accountNo")
+	Account account;
+
+	public Beneficiary() {
+		
+	}
+
+	public Beneficiary(int beneficiaryId, String beneficiaryName, int toAccountNo) {
+		super();
+		this.beneficiaryId = beneficiaryId;
+		this.beneficiaryName = beneficiaryName;
+		this.toAccountNo = toAccountNo;
+	}
+
+	public int getBeneficiaryId() {
+		return beneficiaryId;
+	}
+
+	public void setBeneficiaryId(int beneficiaryId) {
+		this.beneficiaryId = beneficiaryId;
+	}
+
+	public String getBeneficiaryName() {
+		return beneficiaryName;
+	}
+
+	public void setBeneficiaryName(String beneficiaryName) {
+		this.beneficiaryName = beneficiaryName;
+	}
+
+	public int getToAccountNo() {
+		return toAccountNo;
+	}
+
+	public void setToAccountNo(int toAccountNo) {
+		this.toAccountNo = toAccountNo;
+	}
+
+	public Account getAccount() {
+		return account;
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
+	}
+
+
 	
 	
 }

@@ -6,7 +6,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.lti.model.Account;
+import com.lti.model.Address;
 import com.lti.model.Customer;
 
 
@@ -23,11 +23,33 @@ public class CustomerDaoImpl implements CustomerDao {
 		return persistedUser;
 	}
 
+
 	@Override
 	@Transactional
-	public Account createAAccount(Account account) {
-		Account persistedUser = em.merge(account);
-		return persistedUser;
+	public Customer addorUpdateCustomerWithAnAddress(Customer customer) {
+		Customer c = em.merge(customer);
+	    return c;
 	}
+
+	@Override
+	@Transactional
+	public Address addAddressToACustomer(Address address) {
+		Address add = em.merge(address);
+		return add;
+	}
+
+	@Override
+	public Address getCustomerAddressByCustomerId(int customerId) {
+
+		Customer u = em.find(Customer.class, customerId);
+		return u.getAddress();
+	}
+
+	@Override
+	public Customer findCustomerById(int customerId) {
+		Customer c = em.find(Customer.class, customerId);
+		return c;
+	}
+
 
 }
